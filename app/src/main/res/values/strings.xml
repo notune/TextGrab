@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name" translatable="false">TextGrab</string>
+    <string name="intent_extract_text">Extract text</string>
+    <string name="tile_label">OCR screenshot</string>
+
+    <string name="home_subtitle">Select and copy text from any image.\nEverything runs on this device — no internet, no Google services.</string>
+    <string name="home_hint">Tip: share any image to TextGrab, or add the "OCR screenshot" tile to your quick settings — take a screenshot, tap the tile, select the text.</string>
+    <string name="pick_image">Choose image</string>
+    <string name="latest_screenshot">Latest screenshot</string>
+
+    <string name="back">Back</string>
+    <string name="copy">Copy</string>
+    <string name="copy_all">Copy all text</string>
+    <string name="copied">Copied to clipboard</string>
+    <string name="share">Share</string>
+    <string name="select_all">Select all</string>
+    <string name="select_all_short">All</string>
+    <string name="search_web">Search the web</string>
+    <string name="view_as_text">View as text</string>
+    <string name="recognized_text">Recognized text</string>
+
+    <string name="no_text_found">No text found in this image</string>
+    <string name="no_screenshot_found">No screenshot found</string>
+    <string name="permission_needed">Photo access is needed to open your latest screenshot</string>
+    <string name="load_failed">Could not open image. %1$s</string>
+</resources>

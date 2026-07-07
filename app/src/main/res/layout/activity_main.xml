@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?android:colorBackground">
+
+    <!-- ============================== Home ============================== -->
+    <LinearLayout
+        android:id="@+id/homeGroup"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:padding="32dp">
+
+        <ImageView
+            android:layout_width="96dp"
+            android:layout_height="96dp"
+            android:src="@drawable/ic_tile"
+            app:tint="?attr/colorPrimary"
+            android:importantForAccessibility="no" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/app_name"
+            android:textAppearance="?attr/textAppearanceHeadlineMedium" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:gravity="center"
+            android:text="@string/home_subtitle"
+            android:textAppearance="?attr/textAppearanceBodyMedium"
+            android:textColor="?android:textColorSecondary" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnPick"
+            style="@style/Widget.Material3.Button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:maxWidth="400dp"
+            android:text="@string/pick_image" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnScreenshot"
+            style="@style/Widget.Material3.Button.TonalButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:maxWidth="400dp"
+            android:text="@string/latest_screenshot" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="28dp"
+            android:gravity="center"
+            android:text="@string/home_hint"
+            android:textAppearance="?attr/textAppearanceBodySmall"
+            android:textColor="?android:textColorSecondary" />
+    </LinearLayout>
+
+    <!-- ============================== Viewer ============================ -->
+    <FrameLayout
+        android:id="@+id/viewerGroup"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        tools:visibility="visible">
+
+        <dev.noah.textgrab.SelectableOcrView
+            android:id="@+id/ocrView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <LinearLayout
+            android:id="@+id/topBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingHorizontal="8dp"
+            android:paddingVertical="4dp"
+            android:background="@drawable/top_scrim">
+
+            <ImageButton
+                android:id="@+id/btnBack"
+                style="@style/ViewerIconButton"
+                android:contentDescription="@string/back"
+                android:src="@drawable/ic_back" />
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1" />
+
+            <ImageButton
+                android:id="@+id/btnSelectAll"
+                style="@style/ViewerIconButton"
+                android:contentDescription="@string/select_all"
+                android:src="@drawable/ic_select_all" />
+
+            <ImageButton
+                android:id="@+id/btnTextMode"
+                style="@style/ViewerIconButton"
+                android:contentDescription="@string/view_as_text"
+                android:src="@drawable/ic_text" />
+
+            <ImageButton
+                android:id="@+id/btnCopyAll"
+                style="@style/ViewerIconButton"
+                android:contentDescription="@string/copy_all"
+                android:src="@drawable/ic_copy" />
+
+            <ImageButton
+                android:id="@+id/btnShareAll"
+                style="@style/ViewerIconButton"
+                android:contentDescription="@string/share"
+                android:src="@drawable/ic_share" />
+        </LinearLayout>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/selectionToolbar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top|start"
+            android:visibility="gone"
+            app:cardCornerRadius="24dp"
+            app:cardElevation="6dp"
+            tools:visibility="visible">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:paddingHorizontal="6dp">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/toolbarCopy"
+                    style="@style/ToolbarTextButton"
+                    android:text="@string/copy" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/toolbarSelectAll"
+                    style="@style/ToolbarTextButton"
+                    android:text="@string/select_all_short" />
+
+                <ImageButton
+                    android:id="@+id/toolbarShare"
+                    style="@style/ToolbarIconButton"
+                    android:contentDescription="@string/share"
+                    android:src="@drawable/ic_share" />
+
+                <ImageButton
+                    android:id="@+id/toolbarSearch"
+                    style="@style/ToolbarIconButton"
+                    android:contentDescription="@string/search_web"
+                    android:src="@drawable/ic_search" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+    </FrameLayout>
+
+    <!-- ============================= Progress ============================ -->
+    <FrameLayout
+        android:id="@+id/progressGroup"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#80000000"
+        android:clickable="true"
+        android:focusable="true"
+        android:visibility="gone">
+
+        <com.google.android.material.progressindicator.CircularProgressIndicator
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:indeterminate="true" />
+    </FrameLayout>
+</FrameLayout>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.TextGrab" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">#3B82F6</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+    </style>
+
+    <style name="ViewerIconButton">
+        <item name="android:layout_width">48dp</item>
+        <item name="android:layout_height">48dp</item>
+        <item name="android:background">?attr/actionBarItemBackground</item>
+        <item name="android:tint">#FFFFFF</item>
+        <item name="android:scaleType">centerInside</item>
+    </style>
+
+    <style name="ToolbarTextButton" parent="Widget.Material3.Button.TextButton">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:minWidth">0dp</item>
+        <item name="android:paddingHorizontal">14dp</item>
+        <item name="android:textSize">15sp</item>
+    </style>
+
+    <style name="ToolbarIconButton">
+        <item name="android:layout_width">44dp</item>
+        <item name="android:layout_height">44dp</item>
+        <item name="android:background">?attr/actionBarItemBackground</item>
+        <item name="android:tint">?attr/colorOnSurface</item>
+        <item name="android:scaleType">centerInside</item>
+    </style>
+</resources>

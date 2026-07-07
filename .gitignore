@@ -1,0 +1,13 @@
+# Build outputs
+build/
+app/build/
+.gradle/
+*.apk
+
+# Machine-specific
+local.properties
+.idea/
+.kotlin/
+
+# Signing secrets: keep the keystore and its passwords out of the repo
+keystore/
