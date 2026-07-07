@@ -1,5 +1,7 @@
 # TextGrab
 
+[![Download APK](https://img.shields.io/github/v/release/notune/TextGrab?label=Download%20APK&color=2563EB)](https://github.com/notune/TextGrab/releases/latest)
+
 Select and copy text from any image on de-googled Android (GrapheneOS,
 CalyxOS, LineageOS, ...). Works like iOS Live Text or the text selection on
 Pixel phones, but fully local and without Google Play services.
