@@ -1,10 +1,31 @@
 # TextGrab
 
-Live-Text-style OCR for de-googled Android (GrapheneOS, CalyxOS, LineageOS, ...).
+Select and copy text from any image on de-googled Android (GrapheneOS,
+CalyxOS, LineageOS, ...). Works like iOS Live Text or the text selection on
+Pixel phones, but fully local and without Google Play services.
 
-Select and copy text directly on any image. It is the same "magic" experience
-as iOS Live Text or the text selection on Pixel phones, but fully local and
-without Google Play services.
+## How to use
+
+**Main workflow, from anything on your screen to copied text in seconds:**
+
+1. Take a screenshot (Power + Volume down)
+2. Swipe down and tap the **OCR screenshot** tile
+3. Tap or drag over the text, then copy
+
+One-time setup: open quick settings, tap the edit (pencil) button and drag
+the **OCR screenshot** tile into your tiles.
+
+**Second workflow, for existing images:**
+
+Share any image from any app (gallery, browser, messenger) to **TextGrab**
+and the text is selectable. Opening image files with TextGrab from a file
+manager works too, as does picking an image from the app's home screen.
+
+## Screenshots
+
+| Tap a word | Long-press and drag | Full text view |
+|---|---|---|
+| ![Select a word](screenshots/select_word.png) | ![Sweep selection](screenshots/sweep_selection.png) | ![Text view](screenshots/text_view.png) |
 
 ## How it works
 
@@ -29,28 +50,6 @@ some diacritics may be missed) and more, plus digits and common punctuation.
 Chinese, Japanese, Korean and Devanagari need separate ML Kit model packs
 (roughly 20 MB each). They are not included yet but are easy to add. Open an
 issue if you want one of them.
-
-## The fast paths
-
-1. **Quick-settings tile** (closest to the iPhone flow):
-   take a screenshot, swipe down, tap **OCR screenshot**, select the text.
-   Add the tile once via quick-settings edit mode.
-2. **Share**: share any image from any app to **TextGrab**.
-3. **Open with**: open image files with TextGrab from a file manager.
-4. **In-app**: pick an image or grab the latest screenshot from the home screen.
-
-## Selection gestures
-
-| Gesture | Action |
-|---|---|
-| Tap a word | Select it |
-| Long-press + drag | Sweep-select |
-| Drag the round handles | Refine the selection |
-| Pinch / double-tap | Zoom |
-| Tap empty area | Clear selection |
-
-The floating toolbar offers Copy, Select all, Share and Web search.
-The top bar has one-tap **Copy all**, **Share all** and a plain-text view.
 
 ## Building
 
