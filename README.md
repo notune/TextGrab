@@ -77,6 +77,20 @@ keyPassword=...
 Without that file the release build is unsigned. Keep your keystore safe:
 updates must be signed with the same key.
 
+## Verifying the APK
+
+Release APKs are signed with this certificate (SHA-256):
+
+```
+ab:c4:bb:ae:c5:6f:d3:db:ab:ac:c8:62:d0:b4:5d:29:3b:53:cc:40:bf:67:d7:25:3b:3e:1b:7d:2d:48:0c:31
+```
+
+Check a downloaded APK with:
+
+```sh
+apksigner verify --print-certs TextGrab.apk
+```
+
 ## Notes
 
 - `minSdk 26` (Android 8.0), `targetSdk 36`.
