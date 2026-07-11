@@ -1,6 +1,7 @@
 # TextGrab
 
 [![Download APK](https://img.shields.io/github/v/release/notune/TextGrab?label=Download%20APK&color=2563EB)](https://github.com/notune/TextGrab/releases/latest)
+[![Get it on Obtainium](https://img.shields.io/badge/Get%20it%20on-Obtainium-1B2734)](https://apps.obtainium.page/redirect?r=obtainium://add/https%3A%2F%2Fgithub.com%2Fnotune%2FTextGrab)
 
 Select and copy text from any image on de-googled Android (GrapheneOS,
 CalyxOS, LineageOS, ...). Works like iOS Live Text or the text selection on
@@ -77,19 +78,31 @@ keyPassword=...
 Without that file the release build is unsigned. Keep your keystore safe:
 updates must be signed with the same key.
 
+## Installing with Obtainium
+
+Tap the Obtainium badge above on your phone (or add
+`https://github.com/notune/TextGrab` as an app source in
+[Obtainium](https://github.com/ImranR98/Obtainium)) to install TextGrab and
+get updates straight from this repo's releases.
+
 ## Verifying the APK
 
-Release APKs are signed with this certificate (SHA-256):
+Release APKs are signed with this certificate (package + SHA-256, ready to
+paste into [AppVerifier](https://github.com/soupslurpr/AppVerifier)):
 
 ```
-ab:c4:bb:ae:c5:6f:d3:db:ab:ac:c8:62:d0:b4:5d:29:3b:53:cc:40:bf:67:d7:25:3b:3e:1b:7d:2d:48:0c:31
+dev.noah.textgrab
+AB:C4:BB:AE:C5:6F:D3:DB:AB:AC:C8:62:D0:B4:5D:29:3B:53:CC:40:BF:67:D7:25:3B:3E:1B:7D:2D:48:0C:31
 ```
 
-Check a downloaded APK with:
+On a computer you can check a downloaded APK with:
 
 ```sh
 apksigner verify --print-certs TextGrab.apk
 ```
+
+After the first install, Android itself rejects any update that is not
+signed with the same key.
 
 ## Notes
 
