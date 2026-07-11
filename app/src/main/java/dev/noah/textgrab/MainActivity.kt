@@ -37,6 +37,7 @@ class MainActivity : AppCompatActivity(), SelectableOcrView.Listener {
 
     companion object {
         const val EXTRA_LATEST_SCREENSHOT = "dev.noah.textgrab.LATEST_SCREENSHOT"
+        const val EXTRA_CAPTURED_SCREEN = "dev.noah.textgrab.CAPTURED_SCREEN"
     }
 
     private lateinit var binding: ActivityMainBinding
@@ -81,6 +82,11 @@ class MainActivity : AppCompatActivity(), SelectableOcrView.Listener {
             pickImage.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly))
         }
         binding.btnScreenshot.setOnClickListener { requestScreenshotOcr() }
+        binding.btnEnableCapture.setOnClickListener {
+            runCatching {
+                startActivity(Intent(android.provider.Settings.ACTION_ACCESSIBILITY_SETTINGS))
+            }
+        }
 
         binding.btnBack.setOnClickListener { onBackFromViewer() }
         binding.btnSelectAll.setOnClickListener { binding.ocrView.selectAll() }
@@ -113,6 +119,27 @@ class MainActivity : AppCompatActivity(), SelectableOcrView.Listener {
         handleIntent(intent)
     }
 
+    override fun onResume() {
+        super.onResume()
+        // Offer the accessibility-based instant capture where supported.
+        binding.btnEnableCapture.isVisible =
+            Build.VERSION.SDK_INT >= 31 && !isCaptureServiceEnabled()
+    }
+
+    /** Checks the system setting rather than the live service instance, which
+     *  can be briefly null while the system (re)binds the service. */
+    private fun isCaptureServiceEnabled(): Boolean {
+        val component = "$packageName/${CaptureAccessibilityService::class.java.name}"
+        val shortComponent = "$packageName/.${CaptureAccessibilityService::class.java.simpleName}"
+        val enabled = android.provider.Settings.Secure.getString(
+            contentResolver,
+            android.provider.Settings.Secure.ENABLED_ACCESSIBILITY_SERVICES
+        ) ?: return false
+        return enabled.split(':').any {
+            it.equals(component, ignoreCase = true) || it.equals(shortComponent, ignoreCase = true)
+        }
+    }
+
     override fun onNewIntent(intent: Intent) {
         super.onNewIntent(intent)
         setIntent(intent)
@@ -133,6 +160,13 @@ class MainActivity : AppCompatActivity(), SelectableOcrView.Listener {
                 launchedWithImage = true
                 openImage(uri)
             }
+            intent.getBooleanExtra(EXTRA_CAPTURED_SCREEN, false) -> {
+                val captured = CaptureHolder.take()
+                if (captured != null) {
+                    launchedWithImage = true
+                    openBitmap(captured)
+                } else showHome()
+            }
             intent.getBooleanExtra(EXTRA_LATEST_SCREENSHOT, false) -> {
                 launchedWithImage = true
                 requestScreenshotOcr()
@@ -148,14 +182,7 @@ class MainActivity : AppCompatActivity(), SelectableOcrView.Listener {
         lifecycleScope.launch {
             try {
                 val bitmap = ImageLoader.load(this@MainActivity, uri)
-                val result = OcrEngine.recognize(bitmap)
-                currentBitmap = bitmap
-                currentResult = result
-                binding.ocrView.setContent(bitmap, result)
-                showViewer(loading = false)
-                if (result.isEmpty) {
-                    Snackbar.make(binding.root, R.string.no_text_found, Snackbar.LENGTH_LONG).show()
-                }
+                processBitmap(bitmap)
             } catch (e: Exception) {
                 android.util.Log.e("TextGrab", "Failed to open $uri", e)
                 showHome()
@@ -165,6 +192,22 @@ class MainActivity : AppCompatActivity(), SelectableOcrView.Listener {
                     Snackbar.LENGTH_LONG
                 ).show()
             }
+        }
+    }
+
+    private fun openBitmap(bitmap: Bitmap) {
+        showViewer(loading = true)
+        lifecycleScope.launch { processBitmap(bitmap) }
+    }
+
+    private suspend fun processBitmap(bitmap: Bitmap) {
+        val result = OcrEngine.recognize(bitmap)
+        currentBitmap = bitmap
+        currentResult = result
+        binding.ocrView.setContent(bitmap, result)
+        showViewer(loading = false)
+        if (result.isEmpty) {
+            Snackbar.make(binding.root, R.string.no_text_found, Snackbar.LENGTH_LONG).show()
         }
     }
 

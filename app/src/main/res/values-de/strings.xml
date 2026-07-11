@@ -19,6 +19,11 @@
     <string name="view_as_text">Als Text anzeigen</string>
     <string name="recognized_text">Erkannter Text</string>
 
+    <string name="enable_instant_capture">Sofortaufnahme aktivieren</string>
+    <string name="a11y_label">TextGrab Sofortaufnahme</string>
+    <string name="a11y_description">Erlaubt der Kachel „OCR Screenshot", den Bildschirm selbst aufzunehmen — ein Tipp auf die Kachel genügt. TextGrab macht nur dann einen Screenshot, wenn die Kachel angetippt wird. Es liest keine Bildschirminhalte, beobachtet keine Eingaben und hat keinen Internetzugriff.</string>
+    <string name="capture_failed">Aufnahme fehlgeschlagen, letzter Screenshot wird geöffnet</string>
+
     <string name="no_text_found">Kein Text im Bild gefunden</string>
     <string name="no_screenshot_found">Kein Screenshot gefunden</string>
     <string name="permission_needed">Fotozugriff wird benötigt, um den letzten Screenshot zu öffnen</string>

@@ -10,12 +10,15 @@ Pixel phones, but fully local and without Google Play services.
 
 **Main workflow, from anything on your screen to copied text in seconds:**
 
-1. Take a screenshot (Power + Volume down)
-2. Swipe down and tap the **OCR screenshot** tile
-3. Tap or drag over the text, then copy
+1. Swipe down and tap the **OCR screenshot** tile
+2. Tap or drag over the text, then copy
 
 One-time setup: open quick settings, tap the edit (pencil) button and drag
-the **OCR screenshot** tile into your tiles.
+the **OCR screenshot** tile into your tiles. Then enable instant capture via
+the button on the app's home screen, so the tile can take the screenshot by
+itself (Android 12+, uses a screenshot-only accessibility service that reads
+no screen content). Without instant capture, take a screenshot first and the
+tile opens it.
 
 **Second workflow, for existing images:**
 

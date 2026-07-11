@@ -56,6 +56,16 @@
             android:maxWidth="400dp"
             android:text="@string/latest_screenshot" />
 
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnEnableCapture"
+            style="@style/Widget.Material3.Button.TextButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:maxWidth="400dp"
+            android:text="@string/enable_instant_capture"
+            android:visibility="gone" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

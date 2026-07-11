@@ -6,13 +6,22 @@ import android.os.Build
 import android.service.quicksettings.TileService
 
 /**
- * Quick-settings tile: take a screenshot with the usual key combo,
- * swipe down, tap the tile — the newest screenshot opens with all
- * text selectable. Closest equivalent to the Pixel/iOS flow.
+ * Quick-settings tile. Preferred path: the accessibility service captures
+ * the current screen itself, so one tile tap goes straight to selectable
+ * text. Fallback (service not enabled): open the newest screenshot.
  */
 class ScreenshotTileService : TileService() {
 
     override fun onClick() {
+        if (Build.VERSION.SDK_INT >= 31) {
+            val capture = CaptureAccessibilityService.instance
+            if (capture != null) {
+                // The service dismisses the shade itself; no activity launch
+                // here, or it would end up in the screenshot.
+                capture.captureScreenAndOpen()
+                return
+            }
+        }
         val intent = Intent(this, MainActivity::class.java).apply {
             action = Intent.ACTION_MAIN
             putExtra(MainActivity.EXTRA_LATEST_SCREENSHOT, true)
