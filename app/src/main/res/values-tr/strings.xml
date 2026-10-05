@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name" translatable="false">TextGrab</string>
+    <string name="intent_extract_text">Metni çıkar</string>
+    <string name="tile_label">OCR ekran görüntüsü</string>
+
+    <string name="home_subtitle">Herhangi bir görselden metin seçin ve kopyalayın.\nHer şey bu cihazda çalışır — internet veya Google hizmetleri gerekmez.</string>
+    <string name="home_hint">İpucu: Herhangi bir görseli TextGrab ile paylaşın veya hızlı ayarlara "OCR ekran görüntüsü" kutucuğunu ekleyin — ekran görüntüsü alın, kutucuğa dokunun ve metni seçin.</string>
+    <string name="pick_image">Görsel seç</string>
+    <string name="latest_screenshot">Son ekran görüntüsü</string>
+
+    <string name="back">Geri</string>
+    <string name="copy">Kopyala</string>
+    <string name="copy_all">Tüm metni kopyala</string>
+    <string name="copied">Panoya kopyalandı</string>
+    <string name="share">Paylaş</string>
+    <string name="select_all">Tümünü seç</string>
+    <string name="select_all_short">Tümü</string>
+    <string name="search_web">Web'de ara</string>
+    <string name="view_as_text">Metin olarak görüntüle</string>
+    <string name="recognized_text">Tanınan metin</string>
+
+    <string name="enable_instant_capture">Anlık yakalamayı etkinleştir</string>
+    <string name="a11y_label">TextGrab anlık yakalama</string>
+    <string name="a11y_description">OCR ekran görüntüsü kutucuğunun ekranı kendi başına yakalamasını sağlar; böylece kutucuğa bir kez dokunmanız yeterlidir. TextGrab yalnızca kutucuğa dokunduğunuzda ekran görüntüsü alır. Ekran içeriğini okumaz, girişlerinizi izlemez ve internete erişmez.</string>
+    <string name="capture_failed">Ekran yakalanamadı, bunun yerine son ekran görüntüsü açılıyor</string>
+
+    <string name="no_text_found">Bu görselde metin bulunamadı</string>
+    <string name="no_screenshot_found">Ekran görüntüsü bulunamadı</string>
+    <string name="permission_needed">Son ekran görüntünüzü açmak için fotoğraflara erişim izni gerekiyor</string>
+    <string name="load_failed">Görsel açılamadı. %1$s</string>
+</resources>
